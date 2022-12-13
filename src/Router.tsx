@@ -1,9 +1,10 @@
 import { Routes, Route } from "react-router-dom";
+import { DefaultLayout } from "./layouts/DefaultLayout";
 
 export function Router() {
     return (
         <Routes>
-            <Route path="/" element={<div>Hello World</div>}/>
+            <Route path="/" element={<DefaultLayout/>}/>
         </Routes>
     );
 }
