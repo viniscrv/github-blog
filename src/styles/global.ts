@@ -16,6 +16,17 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${props => props.theme["base-background"]};
         color: ${props => props.theme["base-text"]};
         -webkit-font-smoothing: antialiased;
+        ::-webkit-scrollbar {
+        width: 20px;
+        }
+        ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+        background: ${props => props.theme["base-input"]};
+        border-radius: 4px;
+        }
+
     }
     body, input, textarea, button {
         font: 400 1rem "Nunito", sans-serif;

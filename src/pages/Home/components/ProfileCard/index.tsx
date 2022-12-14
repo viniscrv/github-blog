@@ -28,15 +28,10 @@ export function ProfileCard() {
         fetchProfileData();
     },[]);
 
-    function log(){
-        console.log(profileData?.avatar_url);
-    }
-
     const theme = useTheme();
 
     return (
         <ProfileCardContainer>
-            {/* <button onClick={log}>log</button> */}
             <img src={profileData?.avatar_url} alt="" />
             <div>
                 <header>

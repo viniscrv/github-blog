@@ -15,14 +15,15 @@ export const PostContainer = styled.div`
         display: flex;
         justify-content: space-between;
         h4 {
+            color: ${props => props.theme["base-title"]};
             font-size: 1.25rem;
             font-weight: bold;
+            max-width: 17.5rem;
         }
         span {
+            color: ${props => props.theme["base-span"]};
             margin-top: 3px;
             width: max-content;
-            white-space: nowrap;
-            color: ${props => props.theme["base-span"]};
         }
     }
     p {
