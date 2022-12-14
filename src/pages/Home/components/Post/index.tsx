@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { PostContainer } from "./styles";
 
 interface PostFormat {
@@ -7,8 +8,10 @@ interface PostFormat {
 
 export function Post({title, content}: PostFormat) {
 
+    const navigate = useNavigate();
+
     return (
-        <PostContainer>
+        <PostContainer onClick={() => navigate("/publication")}>
             <header>
                 <h4>{title}</h4>
                 <span>Há 1 dia</span>

@@ -36,7 +36,7 @@ export const ProfileCardContainer = styled.div`
                 align-items: center;
                 gap: .5rem;
                 a {
-                    color: ${props => props.theme["blue"]};
+                    color: ${props => props.theme["green"]};
                     text-decoration: none;
                 }
             }

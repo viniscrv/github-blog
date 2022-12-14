@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { Post } from "./components/Post";
 import { ProfileCard } from "./components/ProfileCard";
@@ -32,6 +33,7 @@ export function Home() {
         console.log(issues);
     }
 
+
     return (
         <HomeContainer>
             <ProfileCard/>
@@ -40,7 +42,7 @@ export function Home() {
             <PostList>
                 {issues && 
                 issues.map((issue:PostFormatType) => {
-                    return <Post key={issue.url} title={issue.title} content={issue.body} />
+                    return <Post key={issue.url} title={issue.title} content={issue.body}/>
                 })}
             </PostList>
         </HomeContainer>

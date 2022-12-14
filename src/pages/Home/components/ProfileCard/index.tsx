@@ -38,7 +38,7 @@ export function ProfileCard() {
                     <h3>{profileData?.name}</h3>
                     <span className="link">
                         <a href={profileData?.html_url} target="_blank">GITHUB</a>
-                        <FontAwesomeIcon icon={ faArrowUpRightFromSquare } color={theme["blue"]} size="sm"/>
+                        <FontAwesomeIcon icon={ faArrowUpRightFromSquare } color={theme["green"]} size="sm"/>
                     </span>
                 </header>
                 <p>{profileData?.bio}</p>

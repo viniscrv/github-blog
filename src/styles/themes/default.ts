@@ -10,6 +10,6 @@ export const defaultTheme = {
     "base-profile": "#121214",
     "base-background": "#09090a",
     "base-input": "#202024",
-    blue: "#00875F",
+    green: "#00875F",
 
 } as const 
