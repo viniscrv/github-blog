@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
+import background from "../assets/background.gif"
+
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -10,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         outline: 0;
     }
     body {
+        background-image: url(${background});
         background-color: ${props => props.theme["base-background"]};
         color: ${props => props.theme["base-text"]};
         -webkit-font-smoothing: antialiased;

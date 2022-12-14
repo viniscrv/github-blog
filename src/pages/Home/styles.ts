@@ -5,3 +5,10 @@ export const HomeContainer = styled.main`
     width: 100%;
     margin: 0 auto;
 `
+
+export const PostList = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+`
