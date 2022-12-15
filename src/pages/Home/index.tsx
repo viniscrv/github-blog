@@ -7,18 +7,20 @@ import { HomeContainer, PostList, SearchForm } from "./styles";
 export function Home() {
 
     interface PostFormatType {
-        url?: string;
-        title?: string;
-        body?: string;
-        updated_at?: string;
-        number?: number;
+        url: string;
+        title: string;
+        body: string;
+        updated_at: string;
+        number: number;
     }
 
     const [issues, setIssues] = useState<PostFormatType[]>([]);
 
-    // const [issueField, setIssueField] = useState("");
+    const [search, setSearch] = useState("");
 
     const totalPublications = issues.length; 
+
+    const filtradedIssues = issues.filter((issue) => issue.title.toLowerCase().includes(search.toLowerCase()))
 
     async function fetchIssues() {
         const response = await api.get("/search/issues", {
@@ -33,10 +35,6 @@ export function Home() {
         fetchIssues();
     },[]);
 
-    function log(){
-        console.log(issues);
-    }
-
     return (
         <HomeContainer>
             <ProfileCard/>
@@ -50,14 +48,13 @@ export function Home() {
                     <input 
                     type="text" 
                     placeholder="Buscar conteúdo" 
-                    // onChange={(e) => setIssueField(e.target.value)} 
-                    // value={issueField} 
+                    onChange={(e) => setSearch((e.target.value))} 
+                    value={search} 
                     />
                 </form>
             </SearchForm>
-            <button onClick={log}>log</button>
             <PostList>
-                {issues.map((issue:PostFormatType) => {
+                {filtradedIssues.map((issue:PostFormatType) => {
                     return <Post key={issue.url} title={issue.title} content={issue.body} number={issue.number} date={issue.updated_at} />
                 })}
             </PostList>

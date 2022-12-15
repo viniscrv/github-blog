@@ -4,16 +4,16 @@ import { PublicationBody, PublicationContainer, PublicationHeader } from "./styl
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown"
 
 export function Publication() {
 
     const navigate = useNavigate();
-
     const { number } = useParams();
 
     interface postContetFormat {
-        title?: string;
-        body?: string;
+        title: string;
+        body: string;
         user: {
             login: string;
         };
@@ -21,7 +21,7 @@ export function Publication() {
         created_at: string;
     }
 
-    const [postContent, setPostContent] = useState<postContetFormat>();
+    const [postContent, setPostContent] = useState({} as postContetFormat);
 
     async function fetchIssueContent() {
         const response = await api.get(`repos/viniscrv/github-blog/issues/${number}`);
@@ -33,37 +33,34 @@ export function Publication() {
         fetchIssueContent();
     },[]);
 
-    function log(){
-        console.log(postContent);
-    }
-
     return (
         <PublicationContainer>
-                <button onClick={log} >log</button>
             <PublicationHeader>
                 <header>
                     <button onClick={() => navigate("/")}><FontAwesomeIcon icon={ faChevronLeft } /> VOLTAR</button>
                     <a href="#">VER NO GITHUB <FontAwesomeIcon icon={ faArrowUpRightFromSquare } /></a>
                 </header>
-                <h3>{postContent?.title}</h3>
+                <h3>{postContent.title}</h3>
                 <div className="icons"> 
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faCat } size="sm"/>
-                        {postContent?.user.login}
+                        {postContent.user?.login}
                     </div>
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faCalendarDays } size="sm"/>
-                        {postContent?.created_at}
+                        {postContent.created_at}
                     </div>
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faComment } size="sm"/>
-                        {`${postContent?.comments} comentários`}
+                        {`${postContent.comments} comentários`}
                     </div>
                 </div>
             </PublicationHeader>
 
             <PublicationBody>
-                {postContent?.body}
+                <ReactMarkdown>
+                    {postContent.body}
+                </ReactMarkdown>
             </PublicationBody>
 
         </PublicationContainer>

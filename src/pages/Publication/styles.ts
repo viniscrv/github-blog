@@ -60,7 +60,11 @@ export const PublicationHeader = styled.header`
 `
 
 export const PublicationBody = styled.div`
+    background-color: ${props => props.theme["base-post"]};
     font-size: 1.1rem;
+    margin-top: 2rem;
     padding: 2.5rem 2rem;
+    border-radius: 10px;
+    line-height: 1.6;
 
 `
