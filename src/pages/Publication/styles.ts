@@ -7,7 +7,7 @@ export const PublicationContainer = styled.main`
 `
 
 export const PublicationHeader = styled.header`
-    background-color: ${props => props.theme["base-profile"]};
+    background-color: ${props => props.theme["base-card"]};
     width: 100%;
     height: 10.5rem;
     border-radius: 10px;
@@ -60,7 +60,7 @@ export const PublicationHeader = styled.header`
 `
 
 export const PublicationBody = styled.div`
-    background-color: ${props => props.theme["base-post"]};
+    background-color: ${props => props.theme["base-card"]};
     font-size: 1.1rem;
     margin-top: 2rem;
     padding: 2.5rem 2rem;

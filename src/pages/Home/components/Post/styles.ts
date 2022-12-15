@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PostContainer = styled.div`
     width: 26rem;
     height: 16.25rem;
-    background-color: ${props => props.theme["base-post"]};
+    background-color: ${props => props.theme["base-card"]};
     border-radius: 10px;
     padding: 2rem;
     display: flex;
@@ -18,7 +18,7 @@ export const PostContainer = styled.div`
             color: ${props => props.theme["base-title"]};
             font-size: 1.25rem;
             font-weight: bold;
-            max-width: 17.5rem;
+            max-width: 16rem;
         }
         span {
             color: ${props => props.theme["base-span"]};

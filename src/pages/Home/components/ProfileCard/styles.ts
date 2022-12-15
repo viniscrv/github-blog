@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProfileCardContainer = styled.div`
-    background-color: ${props => props.theme["base-profile"]};
+    background-color: ${props => props.theme["base-card"]};
     width: 100%;
     height: 13.25rem;
     border-radius: 10px;
@@ -50,7 +50,7 @@ export const ProfileCardContainer = styled.div`
             justify-self: flex-end;
             .icons__info {
                 font-size: 1rem;
-                color: ${props => props.theme["base-subtitle"]};
+                color: ${props => props.theme["base-span"]};
                 gap: .5rem;
                 display: flex;
                 align-items: center;

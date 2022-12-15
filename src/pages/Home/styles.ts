@@ -26,7 +26,7 @@ export const SearchForm = styled.div`
 
         h4 {
             font-size: 1.125rem;
-            color: ${props => props.theme["base-subtitle"]};
+            color: ${props => props.theme["base-title"]};
         }
         span {
             font-size: 0.875rem;
@@ -34,14 +34,12 @@ export const SearchForm = styled.div`
         }
     }
 
-    form {
-        input {
-            width: 100%;
-            padding: 1rem;
-            color: ${props => props.theme["base-text"]};
-            background-color: ${props => props.theme["base-input"]};
-            border: 1px solid ${props => props.theme["base-border"]};
-            border-radius: 6px;
-        }
+    input {
+        width: 100%;
+        padding: 1rem;
+        color: ${props => props.theme["base-text"]};
+        background-color: ${props => props.theme["base-input"]};
+        border: 1px solid ${props => props.theme["base-border"]};
+        border-radius: 6px;
     }
 `

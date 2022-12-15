@@ -44,11 +44,11 @@ export function ProfileCard() {
                 <p>{profileData?.bio}</p>
                 <div className="icons">
                     <div className="icons__info">
-                        <FontAwesomeIcon icon={ faCat } color={theme["base-label"]} size="sm"/>
+                        <FontAwesomeIcon icon={ faCat } color={theme["base-span"]} size="sm"/>
                         {profileData?.login}
                     </div>
                     <div className="icons__info">
-                        <FontAwesomeIcon icon={ faUserGroup } color={theme["base-label"]} size="sm"/>
+                        <FontAwesomeIcon icon={ faUserGroup } color={theme["base-span"]} size="sm"/>
                         {profileData?.followers}
                     </div>
                 </div>

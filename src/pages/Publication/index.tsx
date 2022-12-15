@@ -4,14 +4,15 @@ import { PublicationBody, PublicationContainer, PublicationHeader } from "./styl
 import { useNavigate, useParams } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from "react-markdown";
+import { dateFormatter } from "../../utils/formatter";
 
 export function Publication() {
 
     const navigate = useNavigate();
     const { number } = useParams();
 
-    interface postContetFormat {
+    interface postContentFormat {
         title: string;
         body: string;
         user: {
@@ -21,7 +22,7 @@ export function Publication() {
         created_at: string;
     }
 
-    const [postContent, setPostContent] = useState({} as postContetFormat);
+    const [postContent, setPostContent] = useState({} as postContentFormat);
 
     async function fetchIssueContent() {
         const response = await api.get(`repos/viniscrv/github-blog/issues/${number}`);
@@ -48,7 +49,7 @@ export function Publication() {
                     </div>
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faCalendarDays } size="sm"/>
-                        {postContent.created_at}
+                        {postContent.created_at && dateFormatter.format((new Date(postContent.created_at)))}
                     </div>
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faComment } size="sm"/>

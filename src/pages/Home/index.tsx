@@ -10,7 +10,7 @@ export function Home() {
         url: string;
         title: string;
         body: string;
-        updated_at: string;
+        created_at: string;
         number: number;
     }
 
@@ -20,7 +20,7 @@ export function Home() {
 
     const totalPublications = issues.length; 
 
-    const filtradedIssues = issues.filter((issue) => issue.title.toLowerCase().includes(search.toLowerCase()))
+    const filtradedIssues = issues.filter((issue) => issue.title.toLowerCase().includes(search.toLowerCase()));
 
     async function fetchIssues() {
         const response = await api.get("/search/issues", {
@@ -43,19 +43,16 @@ export function Home() {
                     <h4>Publicações</h4>
                     <span>{totalPublications} publicações</span>
                 </header>
-
-                <form>
                     <input 
                     type="text" 
                     placeholder="Buscar conteúdo" 
                     onChange={(e) => setSearch((e.target.value))} 
                     value={search} 
                     />
-                </form>
             </SearchForm>
             <PostList>
                 {filtradedIssues.map((issue:PostFormatType) => {
-                    return <Post key={issue.url} title={issue.title} content={issue.body} number={issue.number} date={issue.updated_at} />
+                    return <Post key={issue.url} title={issue.title} content={issue.body} number={issue.number} date={issue.created_at} />
                 })}
             </PostList>
         </HomeContainer>
