@@ -57,6 +57,14 @@ export const PublicationHeader = styled.header`
             flex-direction: row;
         }
     }
+
+    @media (max-width: 1120px){
+        height: max-content;
+        .icons {
+            flex-wrap: wrap;
+            max-width: 100%;
+        }
+    }
 `
 
 export const PublicationBody = styled.div`
@@ -66,5 +74,10 @@ export const PublicationBody = styled.div`
     padding: 2.5rem 2rem;
     border-radius: 10px;
     line-height: 1.6;
+
+    @media (max-width: 1120px){
+        max-width: 100vw;
+        overflow-x: scroll;
+    }
 
 `

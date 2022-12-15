@@ -30,5 +30,12 @@ export const GlobalStyle = createGlobalStyle`
     }
     body, input, textarea, button {
         font: 400 1rem "Nunito", sans-serif;
-    } 
+    }
+    
+    @media (max-width: 1120px){
+        body {
+            padding: 1rem;
+        }
+    }
 `
+

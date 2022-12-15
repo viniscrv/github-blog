@@ -33,4 +33,8 @@ export const PostContainer = styled.div`
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    @media (max-width: 1120px){
+        width: 100%;
+    }
 `

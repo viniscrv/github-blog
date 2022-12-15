@@ -11,6 +11,10 @@ export const PostList = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     gap: 2rem;
+
+    @media (max-width: 1120px){
+        flex-direction: column;
+    }
 `
 
 export const SearchForm = styled.div`
@@ -42,4 +46,6 @@ export const SearchForm = styled.div`
         border: 1px solid ${props => props.theme["base-border"]};
         border-radius: 6px;
     }
+
+    
 `

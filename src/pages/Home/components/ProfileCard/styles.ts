@@ -58,4 +58,16 @@ export const ProfileCardContainer = styled.div`
             }
         }
     }
+
+    @media (max-width: 1120px){
+        div {
+            header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .icons {
+                gap: .5rem;
+            }
+        }
+    }
 `
