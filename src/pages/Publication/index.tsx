@@ -1,37 +1,69 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faArrowUpRightFromSquare, faCat  } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faArrowUpRightFromSquare, faCat, faComment, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { PublicationBody, PublicationContainer, PublicationHeader } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { api } from "../../lib/axios";
+import { useEffect, useState } from "react";
 
 export function Publication() {
 
     const navigate = useNavigate();
 
+    const { number } = useParams();
+
+    interface postContetFormat {
+        title?: string;
+        body?: string;
+        user: {
+            login: string;
+        };
+        comments: number;
+        created_at: string;
+    }
+
+    const [postContent, setPostContent] = useState<postContetFormat>();
+
+    async function fetchIssueContent() {
+        const response = await api.get(`repos/viniscrv/github-blog/issues/${number}`);
+
+    setPostContent(response.data);
+    }
+
+    useEffect(() => {
+        fetchIssueContent();
+    },[]);
+
+    function log(){
+        console.log(postContent);
+    }
+
     return (
         <PublicationContainer>
+                <button onClick={log} >log</button>
             <PublicationHeader>
                 <header>
                     <button onClick={() => navigate("/")}><FontAwesomeIcon icon={ faChevronLeft } /> VOLTAR</button>
                     <a href="#">VER NO GITHUB <FontAwesomeIcon icon={ faArrowUpRightFromSquare } /></a>
                 </header>
-                <h3>JavaScript data types and data structures</h3>
+                <h3>{postContent?.title}</h3>
                 <div className="icons"> 
                     <div className="icons__info">
                         <FontAwesomeIcon icon={ faCat } size="sm"/>
-                        usuario
+                        {postContent?.user.login}
                     </div>
                     <div className="icons__info">
-                        <FontAwesomeIcon icon={ faCat } size="sm"/>
-                        usuario
+                        <FontAwesomeIcon icon={ faCalendarDays } size="sm"/>
+                        {postContent?.created_at}
+                    </div>
+                    <div className="icons__info">
+                        <FontAwesomeIcon icon={ faComment } size="sm"/>
+                        {`${postContent?.comments} comentários`}
                     </div>
                 </div>
             </PublicationHeader>
 
             <PublicationBody>
-            Programming languages all have built-in data structures, but these often differ from one language to another. This article attempts to list the built-in data structures available in JavaScript and what properties they have. These can be used to build other data structures. Wherever possible, comparisons with other languages are drawn.
-
-            Dynamic typing
-            JavaScript is a loosely typed and dynamic language. Variables in JavaScript are not directly associated with any particular value type, and any variable can be assigned (and re-assigned) values of all types:
+                {postContent?.body}
             </PublicationBody>
 
         </PublicationContainer>

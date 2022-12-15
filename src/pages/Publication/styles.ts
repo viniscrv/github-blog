@@ -45,7 +45,7 @@ export const PublicationHeader = styled.header`
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        width: min-content;
+        width: max-content;
         gap: 1.25rem;
         justify-self: flex-end;
         .icons__info {

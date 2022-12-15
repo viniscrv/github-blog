@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { api } from "../../lib/axios";
 import { Post } from "./components/Post";
 import { ProfileCard } from "./components/ProfileCard";
-import { SearchForm } from "./components/SearchForm";
-import { HomeContainer, PostList } from "./styles";
+import { HomeContainer, PostList, SearchForm } from "./styles";
 
 export function Home() {
 
@@ -12,9 +10,15 @@ export function Home() {
         url?: string;
         title?: string;
         body?: string;
+        updated_at?: string;
+        number?: number;
     }
 
-    const [issues, setIssues] = useState<PostFormatType[] | undefined>();
+    const [issues, setIssues] = useState<PostFormatType[]>([]);
+
+    // const [issueField, setIssueField] = useState("");
+
+    const totalPublications = issues.length; 
 
     async function fetchIssues() {
         const response = await api.get("/search/issues", {
@@ -33,16 +37,28 @@ export function Home() {
         console.log(issues);
     }
 
-
     return (
         <HomeContainer>
             <ProfileCard/>
-            <SearchForm/>
+            <SearchForm>
+                <header>
+                    <h4>Publicações</h4>
+                    <span>{totalPublications} publicações</span>
+                </header>
+
+                <form>
+                    <input 
+                    type="text" 
+                    placeholder="Buscar conteúdo" 
+                    // onChange={(e) => setIssueField(e.target.value)} 
+                    // value={issueField} 
+                    />
+                </form>
+            </SearchForm>
             <button onClick={log}>log</button>
             <PostList>
-                {issues && 
-                issues.map((issue:PostFormatType) => {
-                    return <Post key={issue.url} title={issue.title} content={issue.body}/>
+                {issues.map((issue:PostFormatType) => {
+                    return <Post key={issue.url} title={issue.title} content={issue.body} number={issue.number} date={issue.updated_at} />
                 })}
             </PostList>
         </HomeContainer>

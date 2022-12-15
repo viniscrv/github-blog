@@ -4,17 +4,19 @@ import { PostContainer } from "./styles";
 interface PostFormat {
     content?: string;
     title?: string;
+    number?: number;
+    date?: string;
 }
 
-export function Post({title, content}: PostFormat) {
+export function Post({title, content, number, date}: PostFormat) {
 
     const navigate = useNavigate();
 
     return (
-        <PostContainer onClick={() => navigate("/publication")}>
+        <PostContainer onClick={() => navigate(`/publication/${number}`)}>
             <header>
                 <h4>{title}</h4>
-                <span>Há 1 dia</span>
+                <span>{date}</span>
             </header>
 
             <p>{content}</p>
