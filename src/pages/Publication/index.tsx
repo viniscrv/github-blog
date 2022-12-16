@@ -34,12 +34,14 @@ export function Publication() {
         fetchIssueContent();
     },[]);
 
+    const href = `https://github.com/viniscrv/github-blog/issues/${number}`
+
     return (
         <PublicationContainer>
             <PublicationHeader>
                 <header>
                     <button onClick={() => navigate("/")}><FontAwesomeIcon icon={ faChevronLeft } /> VOLTAR</button>
-                    <a href="#">VER NO GITHUB <FontAwesomeIcon icon={ faArrowUpRightFromSquare } /></a>
+                    <a href={href} target="_blank">VER NO GITHUB <FontAwesomeIcon icon={ faArrowUpRightFromSquare } /></a>
                 </header>
                 <h3>{postContent.title}</h3>
                 <div className="icons"> 

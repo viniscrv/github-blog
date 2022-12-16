@@ -25,13 +25,13 @@ export const PublicationHeader = styled.header`
             color: ${props => props.theme["green"]};
             background-color: transparent;
             border: 0;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
             cursor: pointer;
         }
         a {
             color: ${props => props.theme["green"]};
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
             text-decoration: none;
 
